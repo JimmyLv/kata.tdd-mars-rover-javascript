@@ -8,21 +8,23 @@ describe("first test", ()=> {
 })
 
 
-describe("MarsRover TDD Dojo", ()=>{
-  describe("#received single command", ()=>{
-    it("should return 00W when given MarsRover with 00N received L command", ()=>{
-      // given
-      var marsRover = new MarsRover()
+describe("MarsRover TDD Dojo", ()=> {
+  describe("#received single command", ()=> {
 
-      // when
-      marsRover.execute("L")
+    const TEST_DATA = [
+      [new MarsRover(), "L", "00W"],
+      [new MarsRover(), "R", "00E"]
+    ]
 
-      // then
-      expect(marsRover.status()).to.equal("00W")
+    TEST_DATA.forEach(([marsRover, command, status])=> {
+      it("should return " + status + " when given MarsRover with" + marsRover + " received" + command + " command", ()=> {
+        marsRover.execute(command);
+        expect(marsRover.status()).to.equal(status);
+      })
     })
   })
 
-  describe("#received multiple commands", ()=>{
+  describe("#received multiple commands", ()=> {
 
   })
 

@@ -9,6 +9,8 @@ export class MarsRover {
   execute(command) {
     if (command === "L") {
       this._status = "00W"
+    } else if (command === "R") {
+      this._status = "00E"
     }
   }
 
